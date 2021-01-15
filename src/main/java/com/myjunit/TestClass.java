@@ -1,7 +1,17 @@
-/*
+
 package com.myjunit;
 
 
+import org.junit.Assert;
+import org.junit.Rule;
+import org.junit.Test;
+import org.junit.rules.ExpectedException;
+import org.junit.runner.RunWith;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
+import org.mockito.junit.MockitoJUnitRunner;
+
+import static org.mockito.Mockito.when;
 
 @RunWith(MockitoJUnitRunner.class)
 public class TestClass {
@@ -28,4 +38,3 @@ public class TestClass {
 		service.testData(0);
 	}
 }
- */
