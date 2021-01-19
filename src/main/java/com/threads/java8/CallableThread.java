@@ -16,6 +16,7 @@ public class CallableThread {
 		ExecutorService service = Executors.newSingleThreadExecutor();
 		Future<Integer> f = service.submit(task);
 		System.out.println(f.get());
+		service.shutdown();
 		}
 	
 	}
