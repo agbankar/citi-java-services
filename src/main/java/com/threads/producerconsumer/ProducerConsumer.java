@@ -8,22 +8,19 @@ import java.util.concurrent.FutureTask;
 
 public class ProducerConsumer {
     public static void main(String[] args) throws Exception {
-        BlockingQueue blockingQueue = new ArrayBlockingQueue(2);
+        BlockingQueue blockingQueue = new ArrayBlockingQueue(100);
+        for (int i = 0; i < 100; i++) {
+            blockingQueue.put(i);
+        }
         Runnable producer = () -> {
-           while (true){
+            while (true) {
                 int random = new Random().nextInt(10);
                 System.out.println("generated " + random);
-               try {
-                   Thread.sleep(2*1000);
-               } catch (InterruptedException e) {
-                   e.printStackTrace();
-               }
-               try {
+                try {
                     blockingQueue.put(random);
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
-
             }
 
         };
@@ -32,6 +29,7 @@ public class ProducerConsumer {
             while (true) {
                 try {
                     System.out.println("consuming " + blockingQueue.take());
+                    Thread.sleep(5 * 1000);
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }

@@ -24,9 +24,7 @@ public class ProducerConsumerCallable {
                     e.printStackTrace();
                 }
                 return true;
-
             }
-
         };
 
         Callable<Boolean> consumer = () -> {
@@ -37,10 +35,10 @@ public class ProducerConsumerCallable {
                     e.printStackTrace();
                 }
                 return true;
-
             }
 
         };
+
         Thread pThread = new Thread(new FutureTask<>(producer));
         Thread cThread = new Thread(new FutureTask<>(consumer));
         pThread.start();
