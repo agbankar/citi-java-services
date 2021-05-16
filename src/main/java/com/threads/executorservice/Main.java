@@ -10,7 +10,7 @@ public class Main {
 	        ExecutorService executor = Executors.newFixedThreadPool(NTHREDS);
 	        for (int i = 0; i < 10; i++) {
 	            Runnable worker = new MyRunnable(1 + i);
-	            executor.execute(worker);
+	            executor.submit(worker);
 	        }
 	        // This will make the executor accept no new threads
 	        // and finish all existing threads in the queue
