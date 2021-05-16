@@ -5,8 +5,9 @@ import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.FutureTask;
 
 public class Worker {
-    private static Object lock = new Object();
-    static CountDownLatch latch = new CountDownLatch(2);
+    private static  final Object lock = new Object();
+    private static CountDownLatch latch = new CountDownLatch(2);
+
     public static void main(String[] args) throws Exception {
         Runnable printOdd = () -> {
             for (int i = 1; i <= 10; i += 2) {
@@ -46,7 +47,7 @@ public class Worker {
         odd.start();
         even.start();
         latch.await();
-        latch= new CountDownLatch(2);
+        latch = new CountDownLatch(2);
 
         for (int i = 0; i < 3; i++) {
             System.out.println();
@@ -59,8 +60,8 @@ public class Worker {
                     System.out.println("Callable ODD:=" + i);
                     lock.notifyAll();
                     try {
-                        if (i!=9)
-                        lock.wait();
+                        if (i != 9)
+                            lock.wait();
                     } catch (InterruptedException e) {
                         e.printStackTrace();
                     }
@@ -89,8 +90,8 @@ public class Worker {
 
 
         };
-        Thread oddCallableThread = new Thread(new FutureTask<Boolean>(oddCallable));
-        Thread evenCallableThread = new Thread(new FutureTask<Boolean>(evenCallable));
+        Thread oddCallableThread = new Thread(new FutureTask<>(oddCallable));
+        Thread evenCallableThread = new Thread(new FutureTask<>(evenCallable));
 
 
         oddCallableThread.start();
