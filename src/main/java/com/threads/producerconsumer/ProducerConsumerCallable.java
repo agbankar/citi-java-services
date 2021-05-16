@@ -6,39 +6,43 @@ import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.Callable;
 import java.util.concurrent.FutureTask;
 
-public class ProducerConsumer {
+public class ProducerConsumerCallable {
     public static void main(String[] args) throws Exception {
         BlockingQueue blockingQueue = new ArrayBlockingQueue(2);
-        Runnable producer = () -> {
-           while (true){
+        Callable<Boolean> producer = () -> {
+            while (true) {
                 int random = new Random().nextInt(10);
                 System.out.println("generated " + random);
-               try {
-                   Thread.sleep(2*1000);
-               } catch (InterruptedException e) {
-                   e.printStackTrace();
-               }
-               try {
+                try {
+                    Thread.sleep(2 * 1000);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+                try {
                     blockingQueue.put(random);
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
+                return true;
 
             }
 
         };
 
-        Runnable consumer = () -> {
+        Callable<Boolean> consumer = () -> {
             while (true) {
                 try {
                     System.out.println("consuming " + blockingQueue.take());
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
+                return true;
+
             }
+
         };
-        Thread pThread = new Thread(producer);
-        Thread cThread = new Thread(consumer);
+        Thread pThread = new Thread(new FutureTask<>(producer));
+        Thread cThread = new Thread(new FutureTask<>(consumer));
         pThread.start();
         cThread.start();
 
