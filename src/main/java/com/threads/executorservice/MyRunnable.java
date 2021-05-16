@@ -1,5 +1,7 @@
 package com.threads.executorservice;
 
+import java.util.concurrent.CountDownLatch;
+
 /**
  * MyRunnable will count the sum of the number from 1 to the parameter
  * countUntil and then write the result to the console.
@@ -7,21 +9,30 @@ package com.threads.executorservice;
  * MyRunnable is the task which will be performed
  *
  * @author Lars Vogel
- *
  */
 public class MyRunnable implements Runnable {
-    private final long countUntil;
+    private int value;
+    CountDownLatch latch;
 
-    MyRunnable(long countUntil) {
-        this.countUntil = countUntil;
+    MyRunnable(int countUntil, CountDownLatch latch) {
+        this.value = countUntil;
+        this.latch = latch;
     }
 
     @Override
     public void run() {
-        long sum = 0;
-        for (long i = 1; i < countUntil; i++) {
-            sum += i;
+        try {
+            System.out.println(value);
+
+            Thread.sleep(10 * 1000);
+
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        } finally {
+            latch.countDown();
+
         }
-        System.out.println(sum);
+
     }
+
 }

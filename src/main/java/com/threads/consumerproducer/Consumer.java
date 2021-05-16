@@ -1,4 +1,4 @@
-package com.threads.producerconsumer;
+package com.threads.consumerproducer;
 
 import java.util.Queue;
 

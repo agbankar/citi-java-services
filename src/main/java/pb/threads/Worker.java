@@ -5,7 +5,7 @@ import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.FutureTask;
 
 public class Worker {
-    private static  final Object lock = new Object();
+    private static final Object lock = new Object();
     private static CountDownLatch latch = new CountDownLatch(2);
 
     public static void main(String[] args) throws Exception {
@@ -92,7 +92,6 @@ public class Worker {
         };
         Thread oddCallableThread = new Thread(new FutureTask<>(oddCallable));
         Thread evenCallableThread = new Thread(new FutureTask<>(evenCallable));
-
 
         oddCallableThread.start();
         evenCallableThread.start();
