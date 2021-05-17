@@ -43,7 +43,5 @@ public class ProducerConsumerCallable {
         Thread cThread = new Thread(new FutureTask<>(consumer));
         pThread.start();
         cThread.start();
-
-
     }
 }

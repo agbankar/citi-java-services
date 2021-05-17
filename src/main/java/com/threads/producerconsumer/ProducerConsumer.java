@@ -3,8 +3,6 @@ package com.threads.producerconsumer;
 import java.util.Random;
 import java.util.concurrent.ArrayBlockingQueue;
 import java.util.concurrent.BlockingQueue;
-import java.util.concurrent.Callable;
-import java.util.concurrent.FutureTask;
 
 public class ProducerConsumer {
     public static void main(String[] args) throws Exception {
@@ -24,7 +22,6 @@ public class ProducerConsumer {
             }
 
         };
-
         Runnable consumer = () -> {
             while (true) {
                 try {
@@ -39,7 +36,5 @@ public class ProducerConsumer {
         Thread cThread = new Thread(consumer);
         pThread.start();
         cThread.start();
-
-
     }
 }
