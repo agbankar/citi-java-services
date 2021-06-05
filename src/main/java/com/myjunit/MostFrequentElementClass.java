@@ -14,7 +14,7 @@ import org.mockito.junit.MockitoJUnitRunner;
 import static org.mockito.Mockito.when;
 
 @RunWith(MockitoJUnitRunner.class)
-public class TestClass {
+public class MostFrequentElementClass {
 	@Mock
 	ServiceDao dao = new ServiceDao();
 

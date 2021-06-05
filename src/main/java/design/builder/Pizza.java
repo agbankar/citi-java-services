@@ -1,14 +1,11 @@
 package design.builder;
 
-import lombok.Data;
 
-@Data
 public class Pizza {
     private String pizzType;
     private boolean cheese;
     private boolean extraCheese;
 
-    @Data
     private static class PizzaBuilder{
         private String pizzType;
         private boolean cheese;
@@ -24,6 +21,30 @@ public class Pizza {
 
         }
 
+        public String getPizzType() {
+            return pizzType;
+        }
+
+        public void setPizzType(String pizzType) {
+            this.pizzType = pizzType;
+        }
+
+        public boolean isCheese() {
+            return cheese;
+        }
+
+        public void setCheese(boolean cheese) {
+            this.cheese = cheese;
+        }
+
+        public boolean isExtraCheese() {
+            return extraCheese;
+        }
+
+        public void setExtraCheese(boolean extraCheese) {
+            this.extraCheese = extraCheese;
+        }
+
         public Pizza build(){
             Pizza p = new Pizza();
             p.setCheese(this.isCheese());
@@ -33,12 +54,36 @@ public class Pizza {
 
         }
 
-        public static void main(String[] args) {
-            Pizza p= new PizzaBuilder("veg",true).addExtraCheese().build();
-            System.out.println(p);
 
-        }
     }
 
+    public String getPizzType() {
+        return pizzType;
+    }
 
+    public void setPizzType(String pizzType) {
+        this.pizzType = pizzType;
+    }
+
+    public boolean isCheese() {
+        return cheese;
+    }
+
+    public void setCheese(boolean cheese) {
+        this.cheese = cheese;
+    }
+
+    public boolean isExtraCheese() {
+        return extraCheese;
+    }
+
+    public void setExtraCheese(boolean extraCheese) {
+        this.extraCheese = extraCheese;
+    }
+
+    public static void main(String[] args) {
+        Pizza p= new PizzaBuilder("veg",true).addExtraCheese().build();
+        System.out.println(p);
+
+    }
 }
