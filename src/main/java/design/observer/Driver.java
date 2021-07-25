@@ -13,12 +13,7 @@ public class Driver {
         System.out.println(c.getNews());
 
         //updating the news in agency will be notified to all channels
-
         agency.setNews("politics");
         System.out.println(c.getNews());
-
-
-
-
     }
 }
