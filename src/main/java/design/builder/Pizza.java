@@ -6,7 +6,7 @@ public class Pizza {
     private boolean cheese;
     private boolean extraCheese;
 
-    private static class PizzaBuilder{
+    public static class PizzaBuilder{
         private String pizzType;
         private boolean cheese;
         private boolean extraCheese;
