@@ -21,6 +21,10 @@ public class Singleton implements Serializable, Cloneable {
     private static volatile Singleton _instance = null;
 
     private Singleton() {
+        //prevent reflection attack
+        if (_instance != null) {
+            throw new InstantiationError("Creating of this object is not allowed.");
+        }
     }
 
     public static Singleton getInstance() {
@@ -34,11 +38,13 @@ public class Singleton implements Serializable, Cloneable {
         return _instance;
     }
 
+    //prevent serialization attack
     protected Object readResolve() {
         return _instance;
     }
 
-    @Override
+    //prevent cloning attack
+    // @Override
     protected Object clone() throws CloneNotSupportedException {
         throw new CloneNotSupportedException();
     }
