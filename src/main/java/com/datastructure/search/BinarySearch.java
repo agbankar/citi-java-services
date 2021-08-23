@@ -29,6 +29,6 @@ public class BinarySearch {
 			return searchElementInSortedArray(start, end, n);
 		}
 
-		return mid;
+		return -1;
 	}
 }

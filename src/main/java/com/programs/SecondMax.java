@@ -2,9 +2,9 @@ package com.programs;
 
 public class SecondMax {
     public static void main(String[] args) {
-        int[] arr = new int[]{1, 2, 3, 4, 6, 79, 11, 51, 50};
-        int max = 10;
-        int secondMax = 11;
+        int[] arr = new int[]{1, 2, 3, 4, 6, 79, 11, 51, 90};
+        int max = 0;
+        int secondMax = 0;
         int tmp = 0;
 
         for (int i = 0; i < arr.length; i++) {

@@ -14,7 +14,7 @@ import org.mockito.junit.MockitoJUnitRunner;
 import static org.mockito.Mockito.when;
 
 @RunWith(MockitoJUnitRunner.class)
-public class MostFrequentElementClass {
+public class MockDriver {
 	@Mock
 	ServiceDao dao = new ServiceDao();
 
@@ -31,7 +31,7 @@ public class MostFrequentElementClass {
 	}
 
 	@Test
-	public void testServicExceptione() throws MyException {
+	public void testServiceExceptione() throws MyException {
 		when(dao.getdata()).thenReturn(10);
 		expectedEx.expect(MyException.class);
 		expectedEx.expectMessage("test");
